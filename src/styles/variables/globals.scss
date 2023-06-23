@@ -1,0 +1,17 @@
+:root {
+  --font-family-main: Consolas, Serif;
+  --font-size-m: 16px;
+  --font-size-lg: 24px;
+  --font-line-m: 24px;
+  --font-line-lg: 32px;
+  --font-m: var(
+    var(--font-family-main),
+    var(--font-size-m),
+    var(--font-line-m)
+  );
+  --font-lg: var(
+    var(--font-family-main),
+    var(--font-size-lg),
+    var(--font-line-lg)
+  );
+}
