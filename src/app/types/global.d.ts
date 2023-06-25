@@ -1,21 +1,22 @@
 declare module '*.scss' {
   interface IClassNames {
-    [className: string]: string;
+    [className: string]: string
   }
-  const classNames: IClassNames;
-  export = classNames;
+  const classNames: IClassNames
+  export = classNames
 }
 
 declare module '*.svg' {
-  import React from 'react';
-  const SVG: React.FC<React.SVGProps<SVGSVGElement>>;
-  export default SVG;
+  import React from 'react'
+
+  const SVG: React.FC<React.SVGProps<SVGSVGElement>>
+  export default SVG
 }
-declare module '*.png';
-declare module '*.jpg';
-declare module '*.jpeg';
-declare module '*.gif';
-declare module '*.bmp';
-declare module '*.tga';
-declare module '*.webp';
-declare const __IS_DEV__: boolean;
+declare module '*.png'
+declare module '*.jpg'
+declare module '*.jpeg'
+declare module '*.gif'
+declare module '*.bmp'
+declare module '*.tga'
+declare module '*.webp'
+declare const __IS_DEV__: boolean

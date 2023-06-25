@@ -3,7 +3,7 @@
 /functions
 /.cache
 /.idea
-
+.eslintrc.js
 /server/index.js
 /public/build
 preferences.arc
