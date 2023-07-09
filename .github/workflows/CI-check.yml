@@ -24,10 +24,9 @@ jobs:
           useRollingCache: true
 
       - name: 🔎 Type check
-        run: yarn run typecheck
+        run: npm run lint:ts
+      - name: 🔎 Type check
+        run: npm run lint:scss
 
-      - name: 💅 Pretty
-        run: yarn run pretty
-
-      - name: Linter
-        run: yarn run lint
+      - name: 💅 tests
+        run: npm run unit
