@@ -1,0 +1,33 @@
+name: 🚀 Tests
+on: [push]
+
+jobs:
+  typecheck:
+    name: ʦ TypeScript
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🛑 Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.11.0
+
+      - name: ⬇️ Checkout repo
+        uses: actions/checkout@v3
+
+      - name: ⎔ Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: 📥 Download deps
+        uses: bahmutov/npm-install@v1
+        with:
+          install-command: yarn --frozen-lockfile --silent
+          useRollingCache: true
+
+      - name: 🔎 Type check
+        run: yarn run typecheck
+
+      - name: 💅 Pretty
+        run: yarn run pretty
+
+      - name: Linter
+        run: yarn run lint
