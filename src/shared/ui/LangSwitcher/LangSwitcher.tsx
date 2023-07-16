@@ -6,9 +6,10 @@ import { Button, ThemeButton } from '../Button/Button'
 
 interface LangSwitcherProps {
   className?: string
+  shorten?: boolean
 }
 
-export const LangSwitcher: React.FC<LangSwitcherProps> = ({ className }) => {
+export const LangSwitcher: React.FC<LangSwitcherProps> = ({ className, shorten }) => {
   const { t, i18n } = useTranslation()
   const toggle = async () => {
     await i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru')
@@ -16,7 +17,7 @@ export const LangSwitcher: React.FC<LangSwitcherProps> = ({ className }) => {
 
   return (
     <Button className={classNames(cls.LangSwitcher, {}, [className])} theme={ThemeButton.CLEAR} onClick={toggle}>
-      {t('Язык')}
+      {t(shorten ? 'shorten' : 'Язык')}
     </Button>
   )
 }

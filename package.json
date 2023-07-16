@@ -15,7 +15,10 @@
     "lint:scss:fix": "npx stylelint \"**/*.scss\" --fix",
     "unit": "jest --config ./config/jest/jest.config.ts",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "start2": "webpack serve --open 'google-chrome'",
+    "prod": "NODE_ENV=production webpack",
+    "dev": "webpack"
   },
   "keywords": [],
   "author": "",
@@ -98,6 +101,7 @@
     "react-i18next": "^11.15.5",
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.2.1",
+    "schema-utils": "^4.2.0",
     "ulbi": "file:"
   },
   "loki": {
