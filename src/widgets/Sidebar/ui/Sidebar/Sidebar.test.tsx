@@ -1,10 +1,10 @@
 import { fireEvent, render, screen } from '@testing-library/react'
-import { renderWithTranslation } from 'shared/lib/tests/renderWithTranslation/renderWithTranslation'
 import { Sidebar } from './Sidebar'
+import { componentRender } from 'shared/lib/tests/componentRender/componentRender'
 
 describe('Sidebar', () => {
   test('renders without errors', () => {
-    renderWithTranslation(<Sidebar />)
+    componentRender(<Sidebar />)
     expect(screen.getByTestId('sidebar')).toBeInTheDocument()
   })
 
