@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import React, { lazy, useCallback, useEffect, useRef, useState } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import cls from './Modal.module.scss'
 
@@ -7,10 +7,12 @@ interface ModalProps {
   children?: React.ReactNode
   isOpen?: boolean
   onClose?: any
+  lazy?: boolean
 }
 const ANIMATION_DELAY = 150
 export const Modal: React.FC<ModalProps> = ({ className, children, isOpen, onClose }) => {
   const [isClosing, setIsClosing] = useState(false)
+  const [isMounted, setIsMounted] = useState(false)
   const timerRef = useRef<ReturnType<typeof setTimeout>>()
   const handleCloseModal = useCallback(() => {
     if (onClose) {
@@ -48,6 +50,14 @@ export const Modal: React.FC<ModalProps> = ({ className, children, isOpen, onClo
       window.removeEventListener('keydown', handleKeyDown)
     }
   }, [isOpen, handleKeyDown])
+  useEffect(() => {
+    if (isOpen) {
+      setIsMounted(true)
+    }
+  }, [isOpen])
+  if (lazy && !isMounted) {
+    return null
+  }
   return (
     <div className={classNames(cls.Modal, mods, [className])}>
       <div className={cls.overlay} onClick={handleCloseModal}>
