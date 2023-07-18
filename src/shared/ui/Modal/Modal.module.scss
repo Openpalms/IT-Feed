@@ -19,8 +19,7 @@ justify-content: center;
 .content{
 padding: 20px;
 border-radius: 12px;
-background: rgb(235, 235, 235);
-// background: var(--bg-color) ; ///does not work in portal ??
+background: var(--bg-color) ; 
 transition: 0.5s transform; 
 transform: scale(.5);
 max-width: 60%
