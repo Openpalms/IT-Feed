@@ -16,7 +16,7 @@
     var(--font-size-lg),
     var(--font-line-lg)
   );
-  --font-lg: var(
+  --font-xl: var(
     var(--font-family-main),
     var(--font-size-xl),
     var(--font-line-xl)
@@ -30,5 +30,6 @@
   --modal-z-index: 10;
 
   //colors
-  --overlay: rgba(0,0,0,.6)
+  --overlay: rgba(0 ,0 ,0 , .6);
+  --error: rgb(186, 47, 47);
 }
