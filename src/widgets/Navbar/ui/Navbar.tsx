@@ -42,7 +42,7 @@ export const Navbar: React.FC<NavbarProps> = ({ className }) => {
       <Button theme={ThemeButton.CLEAR_INVERTED} className={cls.links} onClick={handleOpenModal}>
         {t('войти')}{' '}
       </Button>
-      <LoginModal isOpen={isAuth} onClose={handleCloseModal} />
+      {isAuth && <LoginModal isOpen={isAuth} onClose={handleCloseModal} />}
     </div>
   )
 }

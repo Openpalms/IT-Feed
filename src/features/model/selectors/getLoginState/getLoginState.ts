@@ -1,3 +1,9 @@
 import { StateSchema } from 'app/providers/StoreProvider/config/StateSchema'
+import { loginSchema } from 'features/AuthByUsername'
 
-export const getLoginState = (state: StateSchema) => state?.login
+const defaultState: loginSchema = {
+  username: '',
+  password: '',
+  isLoading: true,
+}
+export const getLoginState = (state: StateSchema) => state?.login || defaultState
