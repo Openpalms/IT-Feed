@@ -1,4 +1,3 @@
-import React from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import cls from './Text.module.scss'
 
@@ -14,11 +13,12 @@ interface TextProps {
   theme?: TextTheme
 }
 
-export const Text: React.FC<TextProps> = (props) => {
+export const Text = (props: TextProps) => {
   const { className, text, title, theme = TextTheme.PRIMARY } = props
+
   return (
     <div className={classNames(cls.Text, { [cls[theme]]: true }, [className])}>
-      {title && <h2 className={cls.title}>{title}</h2>}
+      {title && <p className={cls.title}>{title}</p>}
       {text && <p className={cls.text}>{text}</p>}
     </div>
   )

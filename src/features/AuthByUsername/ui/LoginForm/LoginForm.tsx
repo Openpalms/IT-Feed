@@ -44,7 +44,7 @@ const LoginForm: React.FC<LoginFormProps> = memo(({ className }) => {
   return (
     <DynamicModuleLoader reducers={InitialReducers}>
       <div className={classNames(cls.LoginForm, {}, [className])}>
-        <Text title='Login Form' theme={TextTheme.PRIMARY} />
+        <Text title='Login Form' />
         {error && <Text text='an error occured, try again' theme={TextTheme.ERROR} />}
         <Input
           placeholder='username'
