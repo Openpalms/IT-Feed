@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { memo, useCallback, useState } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { AppLink, ApplinkTheme } from 'shared/ui/AppLink/AppLink'
 import cls from './Navbar.module.scss'
@@ -12,7 +12,7 @@ import { userActions } from 'app/entities/User/model/slice/UserSlice'
 interface NavbarProps {
   className?: string
 }
-export const Navbar: React.FC<NavbarProps> = ({ className }) => {
+export const Navbar: React.FC<NavbarProps> = memo(({ className }) => {
   const [isAuth, setIsAuth] = useState(false)
   const authData = useSelector(getAuthDataState)
   const dispatch = useDispatch()
@@ -45,4 +45,4 @@ export const Navbar: React.FC<NavbarProps> = ({ className }) => {
       {isAuth && <LoginModal isOpen={isAuth} onClose={handleCloseModal} />}
     </div>
   )
-}
+})
