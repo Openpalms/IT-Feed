@@ -1,5 +1,5 @@
-import React, { lazy, useCallback, useEffect, useRef, useState } from 'react'
-import { classNames } from 'shared/lib/classNames/classNames'
+import React, { MutableRefObject, lazy, useCallback, useEffect, useRef, useState } from 'react'
+import { Mods, classNames } from 'shared/lib/classNames/classNames'
 import cls from './Modal.module.scss'
 
 interface ModalProps {
@@ -10,10 +10,10 @@ interface ModalProps {
   lazy?: boolean
 }
 const ANIMATION_DELAY = 150
-export const Modal: React.FC<ModalProps> = ({ className, children, isOpen, onClose }) => {
+export const Modal: React.FC<ModalProps> = ({ className, children, isOpen, onClose, lazy }) => {
   const [isClosing, setIsClosing] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
-  const timerRef = useRef<ReturnType<typeof setTimeout>>()
+  const timerRef = useRef() as MutableRefObject<ReturnType<typeof setTimeout>>
   const handleCloseModal = useCallback(() => {
     if (onClose) {
       setIsClosing(true)
@@ -37,7 +37,7 @@ export const Modal: React.FC<ModalProps> = ({ className, children, isOpen, onClo
     e.stopPropagation()
   }
 
-  const mods: Record<string, boolean> = {
+  const mods: Mods = {
     [cls.opened]: isOpen,
     [cls.isClosing]: isClosing,
   }

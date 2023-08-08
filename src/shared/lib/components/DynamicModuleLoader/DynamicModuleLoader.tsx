@@ -20,13 +20,13 @@ export const DynamicModuleLoader: React.FC<DynamicModuleLoaderProps> = (props) =
   const store = useStore() as StoreWithManager
 
   useEffect(() => {
-    Object.entries(reducers).forEach(([name, reducer]: ReducersListEntries) => {
-      store.reducerManager.add(name, reducer)
+    Object.entries(reducers).forEach(([name, reducer]) => {
+      store.reducerManager.add(name as StateSchemaKey, reducer)
     })
     return () => {
       if (shouldDestroy) {
-        Object.entries(reducers).forEach(([name]: ReducersListEntries) => {
-          store.reducerManager.remove(name)
+        Object.entries(reducers).forEach(([name]) => {
+          store.reducerManager.remove(name as StateSchemaKey)
         })
       }
     }

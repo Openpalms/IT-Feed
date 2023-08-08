@@ -16,7 +16,7 @@ export const SidebarItem: React.FC<SidebarItemProps> = memo(({ item, collapsed }
         to={item.path}
         className={classNames(cls.item, { [cls.collapsed]: collapsed })}
       >
-        <item.Icon className={cls.icon} />
+        <span className={`${cls.icon}`}>{item.Icon}</span>
         <span className={cls.link}>{item.text}</span>
       </AppLink>
     </div>

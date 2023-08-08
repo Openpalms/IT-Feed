@@ -1,4 +1,4 @@
-import { FC, SVGProps } from 'react'
+import { ComponentType, FC, FunctionComponent, SVGProps } from 'react'
 import { RoutePath } from 'shared/config/routeConfig/routeConfig'
 import AboutIcon from 'shared/assets/icons/about-20-20.svg'
 import MainIcon from 'shared/assets/icons/main-20-20.svg'
@@ -7,23 +7,23 @@ import ProfileIcon from 'shared/assets/icons/profile-20-20.svg'
 export interface ISidebarItem {
   path: string
   text: string
-  Icon?: FC<SVGProps<SVGSVGElement>>
+  Icon?: React.ReactNode
 }
 
 export const SidebarItemsList: ISidebarItem[] = [
   {
     path: RoutePath.main,
-    Icon: MainIcon,
+    Icon: <MainIcon />,
     text: 'Главная',
   },
   {
     path: RoutePath.about,
-    Icon: AboutIcon,
+    Icon: <AboutIcon />,
     text: 'О сайте',
   },
   {
     path: RoutePath.profile,
-    Icon: ProfileIcon,
+    Icon: <ProfileIcon />,
     text: 'Профиль',
   },
 ]
