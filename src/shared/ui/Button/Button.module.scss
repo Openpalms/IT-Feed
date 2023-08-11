@@ -12,6 +12,13 @@
 }
 .outline{
   border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  background: transparent;
+  
+}
+.outline_red{
+  border: 1px solid var(--error);
+  color: var(--error);
   background: transparent;
   
 }

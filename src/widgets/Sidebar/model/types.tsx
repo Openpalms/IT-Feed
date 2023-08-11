@@ -8,6 +8,7 @@ export interface ISidebarItem {
   path: string
   text: string
   Icon?: React.ReactNode
+  authOnly?: boolean
 }
 
 export const SidebarItemsList: ISidebarItem[] = [
@@ -25,5 +26,6 @@ export const SidebarItemsList: ISidebarItem[] = [
     path: RoutePath.profile,
     Icon: <ProfileIcon />,
     text: 'Профиль',
+    authOnly: true,
   },
 ]

@@ -4,11 +4,9 @@ import { ThunkConfig } from 'app/providers/StoreProvider'
 
 export const fetchProfileData = createAsyncThunk<IProfile, void, ThunkConfig<string>>(
   'login/loginByUsername',
-  //   @ts-ignore
   async (_, _thunkAPI) => {
     try {
       const response = await _thunkAPI.extra.api.get<IProfile>('/profile')
-      console.log(response)
       return response.data
     } catch (error) {
       console.log(error)

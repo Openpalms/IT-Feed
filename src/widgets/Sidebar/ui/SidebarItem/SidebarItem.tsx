@@ -3,12 +3,16 @@ import { classNames } from 'shared/lib/classNames/classNames'
 import cls from './SidebarItem.module.scss'
 import { AppLink, ApplinkTheme } from 'shared/ui/AppLink/AppLink'
 import { ISidebarItem } from 'widgets/Sidebar/model/types'
+import { useSelector } from 'react-redux'
+import { getAuthDataState } from 'app/entities/User'
 interface SidebarItemProps {
   item: ISidebarItem
   collapsed: boolean
 }
 
 export const SidebarItem: React.FC<SidebarItemProps> = memo(({ item, collapsed }) => {
+  const isAuth = useSelector(getAuthDataState)
+  if (item.authOnly && !isAuth) return null
   return (
     <div className={classNames(cls.items, {}, [])}>
       <AppLink

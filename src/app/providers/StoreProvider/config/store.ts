@@ -4,7 +4,6 @@ import { NavigateOptions } from 'react-router'
 import { CombinedState, Reducer } from 'redux'
 import { StateSchema } from './StateSchema'
 import { createReducerManager } from './reducerManager'
-import { counterReducer } from 'app/entities/Counter'
 import { userReducer } from 'app/entities/User'
 import { To } from 'react-router-dom'
 
@@ -15,7 +14,6 @@ export function createReduxStore(
 ) {
   const rootReducers: ReducersMapObject<StateSchema> = {
     ...asyncReducers,
-    counter: counterReducer,
     user: userReducer,
   }
 

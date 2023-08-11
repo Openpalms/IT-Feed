@@ -26,13 +26,12 @@
     }
   ],
   "profile": {
-    "firstname": "Dan",
-    "lastname": "galochkin",
-    "age": 21,
     "currency": "RUB",
-    "country": "Russia",
     "city": "Moscow",
-    "username": "admin",
-    "avatar": "https://pic.rutubelist.ru/user/3b/27/3b2758ad5492a76b578f7ee072e4e894.jpg"
+    "username": "Danny",
+    "age": 21,
+    "avatar": "https://w7.pngwing.com/pngs/340/946/png-transparent-avatar-user-computer-icons-software-developer-avatar-child-face-heroes-thumbnail.png",
+    "firstname": "Daniil",
+    "lastname": "Galochkin"
   }
 }
