@@ -1,4 +1,4 @@
-export { ProfileSchema, IProfile } from './model/types/profile'
+export { ProfileSchema, IProfile, ValidationErrors } from './model/types/profile'
 
 export { profileActions, profileReducer } from './model/slice/profileSlice'
 export { fetchProfileData } from './model/services/fetchProfileData/fetchProfileData'
@@ -9,3 +9,4 @@ export { getProfileError } from './model/Selectors/getProfileError/getProfileErr
 export { getProfileLoading } from './model/Selectors/getProfileLoading/getProfileLoading'
 export { getProfileReadonly } from './model/Selectors/getProfileReadonly/getProfileReadonly'
 export { getProfileForm } from './model/Selectors/getProfileForm/getProfileForm'
+export { getProfileValidationError } from './model/Selectors/getProfileValidationError/getProfileValidationError'

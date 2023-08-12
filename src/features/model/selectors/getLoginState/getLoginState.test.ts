@@ -9,7 +9,6 @@ describe('', () => {
         error: 'er',
         username: 'user',
         password: '123',
-        isLoading: false,
       },
     }
     expect(getLoginState(state as StateSchema)).toEqual({

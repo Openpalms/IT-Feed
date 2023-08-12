@@ -12,9 +12,17 @@ export interface IProfile {
 }
 
 export interface ProfileSchema {
-  data: IProfile
+  data?: IProfile
   form?: IProfile
-  isLoading: boolean
+  isLoading?: boolean
   error?: string
-  readonly: boolean
+  readonly?: boolean
+  validationError?: ValidationErrors[]
+}
+export enum ValidationErrors {
+  INCORRECT_USER_DATA = 'INCORRECT_USER_DATA',
+  INCORRECT_USER_AGE = 'INCORRECT_USER_AGE',
+  INCORRECT_USER_COUNTRY = 'INCORRECT_USER_COUNTRY',
+  NO_DATA = 'NO_DATA',
+  SERVER_ERROR = 'SERVER_ERROR',
 }

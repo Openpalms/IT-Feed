@@ -23,13 +23,14 @@ export const profileSlice = createSlice({
     },
     updateProfile: (state, action: PayloadAction<IProfile>) => {
       state.form = {
-        ...state.data,
+        ...state.form,
         ...action.payload,
       }
     },
     cancelEdit: (state) => {
       state.readonly = true
       state.form = state.data
+      state.validationError = []
     },
   },
   extraReducers: (builder) => {
@@ -59,7 +60,7 @@ export const profileSlice = createSlice({
       })
       .addCase(updateProfileData.rejected, (state, action) => {
         state.isLoading = false
-        state.error = action.payload as string
+        state.validationError = action.payload
       })
   },
 })
