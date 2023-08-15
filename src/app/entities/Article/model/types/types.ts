@@ -8,16 +8,16 @@ interface ArticleBase {
   id: string
   type: ArticleBlockType
 }
-interface ArticleCodeBlock extends ArticleBase {
+export interface ArticleCodeBlock extends ArticleBase {
   type: ArticleBlockType.CODE
   code: string
 }
-interface ArticleImageBlock extends ArticleBase {
+export interface ArticleImageBlock extends ArticleBase {
   type: ArticleBlockType.IMAGE
   src: string
   title: string
 }
-interface ArticleTextBlock extends ArticleBase {
+export interface ArticleTextBlock extends ArticleBase {
   type: ArticleBlockType.TEXT
   title?: string
   paragraphs: string[]
@@ -35,10 +35,10 @@ export interface Article {
   title: string
   subtitle: string
   img: string
-  views: number
+  views: number | string
   createdAt: string
   type: Array<ArticleType>
-  block: Array<ArticleBlock>
+  blocks: Array<ArticleBlock>
 }
 
 export interface ArticleDetailsSchema {

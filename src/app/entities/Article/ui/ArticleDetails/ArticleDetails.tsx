@@ -1,4 +1,4 @@
-import React, { memo, useEffect } from 'react'
+import React, { memo, useCallback, useEffect } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import cls from './ArticleDetails.module.scss'
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
@@ -7,11 +7,17 @@ import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArt
 import { articleDetailsReducer } from '../../model/slice/ArticleSlice'
 import { useSelector } from 'react-redux'
 import { getArticleData, getArticleError, getArticleisLoading } from '../../model/selectors/ArticleDetalsSelectors'
-import { Loader } from 'shared/ui/Loader/Loader'
-import { Text, TextAlign } from 'shared/ui/Text/Text'
+import { Text, TextAlign, TextSize } from 'shared/ui/Text/Text'
 import { t } from 'i18next'
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton'
-
+import { Avatar } from 'shared/ui/Avatar/Avatar'
+import EyeIcon from 'shared/assets/icons/eye-20-20.svg'
+import CalendarIcon from 'shared/assets/icons/calendar-20-20.svg'
+import { Icon } from 'shared/ui/Icon/Icon'
+import { ArticleBlock, ArticleBlockType } from '../../model/types/types'
+import { ArticleCode } from '../ArticleCode /ArticleCode'
+import { ArticleImage } from '../ArticleImage/ArticleImage'
+import { ArticleText } from '../ArticleText/ArticleText'
 interface ArticleDetailsProps {
   className?: string
   articleId: string
@@ -26,6 +32,19 @@ export const ArticleDetails: React.FC<ArticleDetailsProps> = memo(({ className, 
   const isLoading = useSelector(getArticleisLoading)
   const error = useSelector(getArticleError)
   const article = useSelector(getArticleData)
+
+  const renderBlock = useCallback((block: ArticleBlock) => {
+    switch (block.type) {
+      case ArticleBlockType.CODE:
+        return <ArticleCode key={block.id} block={block} className={cls.block} />
+      case ArticleBlockType.IMAGE:
+        return <ArticleImage key={block.id} block={block} className={cls.block} />
+      case ArticleBlockType.TEXT:
+        return <ArticleText key={block.id} className={cls.block} block={block} />
+      default:
+        return null
+    }
+  }, [])
 
   useEffect(() => {
     dispatch(fetchArticleById(articleId))
@@ -45,6 +64,24 @@ export const ArticleDetails: React.FC<ArticleDetailsProps> = memo(({ className, 
     )
   } else if (error) {
     content = <Text align={TextAlign.CENTER} title={t('Произошла ошибка при загрузке статьи.')} />
+  } else {
+    content = (
+      <>
+        <div className={cls.avatarWrapper}>
+          <Avatar size={200} source={article?.img} className={cls.avatar} />
+        </div>
+        <Text className={cls.title} title={article?.title} text={article?.subtitle} size={TextSize.L} />
+        <div className={cls.articleInfo}>
+          <Icon className={cls.icon} Svg={EyeIcon} />
+          <Text text={String(article?.views)} />
+        </div>
+        <div className={cls.articleInfo}>
+          <Icon className={cls.icon} Svg={CalendarIcon} />
+          <Text text={article?.createdAt} />
+        </div>
+        {article?.blocks?.map(renderBlock)}
+      </>
+    )
   }
 
   return (

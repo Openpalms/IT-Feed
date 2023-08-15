@@ -1,9 +1,7 @@
 .title{
-font-size: var(--font-size-lg);
 color: var(--primary-color)
 }
 .text{
-    font-size: var(--font-size-m);
     color: var(--secondary-color)
 }
 .error{
@@ -11,10 +9,11 @@ color: var(--primary-color)
         color: var(--error)
         }
         .text{
-            font: var(--font-m); 
+    
             color: var(--error)
         }    
 }
+
 .left{
 text-align: left;
 }
@@ -23,4 +22,24 @@ text-align: left;
 }
 .center{
 text-align: center;
+}
+.size_m {
+    .title {
+        font: var(--font-size-lg);
+    }
+
+    .text {
+        font: var(--font-size-m);
+    }
+}
+.size_l {
+    .title {
+        font: 34px;
+        // font: var(--font-size-xl);
+    }
+
+    .text {
+        font: 25px;
+        // font: var(--font-size-lg);
+    }
 }
