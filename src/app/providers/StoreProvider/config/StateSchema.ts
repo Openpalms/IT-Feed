@@ -4,6 +4,7 @@ import { ProfileSchema } from 'app/entities/Profile'
 import { UserSchema } from 'app/entities/User'
 import { AxiosInstance } from 'axios'
 import { loginSchema } from 'features/AuthByUsername'
+import { ArticleCommentSchema } from 'pages/ArticleDetailsPage'
 import { NavigateOptions, To } from 'react-router-dom'
 
 export interface StateSchema {
@@ -13,6 +14,7 @@ export interface StateSchema {
   login?: loginSchema
   profile?: ProfileSchema
   articleDetails?: ArticleDetailsSchema
+  ArticleComment?: ArticleCommentSchema
 }
 
 export type StateSchemaKey = keyof StateSchema
