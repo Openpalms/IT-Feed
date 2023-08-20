@@ -20,6 +20,7 @@ import { Currency } from 'app/entities/Currency'
 import { Country } from 'app/entities/Country'
 import { TextTheme } from 'shared/ui/Text/Text'
 import { Text } from 'shared/ui/Text/Text'
+import { useParams } from 'react-router-dom'
 
 interface ProfilePageProps {
   className?: string
@@ -28,6 +29,8 @@ const reducers: ReducersList = {
   profile: profileReducer,
 }
 const ProfilePage: React.FC<ProfilePageProps> = ({ className }) => {
+  const { id } = useParams<{ id: string }>()
+
   const formData = useSelector(getProfileForm)
   const error = useSelector(getProfileError)
   const validationErrors = useSelector(getProfileValidationError)
@@ -44,8 +47,8 @@ const ProfilePage: React.FC<ProfilePageProps> = ({ className }) => {
   }
 
   useEffect(() => {
-    dispatch(fetchProfileData())
-  }, [dispatch])
+    id && dispatch(fetchProfileData(id))
+  }, [dispatch, id])
 
   const onChangeFirstname = useCallback(
     (value?: string) => {

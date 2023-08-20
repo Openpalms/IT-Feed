@@ -1,6 +1,7 @@
 import { Currency } from 'app/entities/Currency'
 import { Country } from 'app/entities/Country'
 export interface IProfile {
+  id?: string
   username?: string
   firstname?: string
   lastname?: string

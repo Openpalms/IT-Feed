@@ -13,7 +13,7 @@ export const updateProfileData = createAsyncThunk<IProfile, void, ThunkConfig<Va
       if (errors.length) {
         return _thunkAPI.rejectWithValue(errors)
       }
-      const response = await _thunkAPI.extra.api.put<IProfile>('/profile', formData)
+      const response = await _thunkAPI.extra.api.put<IProfile>(`/profile/${formData?.id}`, formData)
       return response.data
     } catch (error) {
       console.log(error)
