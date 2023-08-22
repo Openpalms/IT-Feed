@@ -2,9 +2,9 @@ import React, { memo } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import cls from './SidebarItem.module.scss'
 import { AppLink, ApplinkTheme } from 'shared/ui/AppLink/AppLink'
-import { ISidebarItem } from 'widgets/Sidebar/model/types'
 import { useSelector } from 'react-redux'
 import { getAuthDataState } from 'app/entities/User'
+import { ISidebarItem } from 'widgets/Sidebar/model/selectors'
 interface SidebarItemProps {
   item: ISidebarItem
   collapsed: boolean
