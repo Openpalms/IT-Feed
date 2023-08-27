@@ -14,6 +14,7 @@ import { addCommentForArticle } from 'features/AddNewComment/model/services/addC
 import { newCommentActions } from 'features/AddNewComment/model/slices/addNewCommentSlice'
 import { Button, ThemeButton } from 'shared/ui/Button/Button'
 import { RoutePath } from 'shared/config/routeConfig/routeConfig'
+import { Page } from 'shared/ui/Page/Page'
 const reducers: ReducersList = {
   ArticleComment: articleCommentsReducer,
 }
@@ -44,7 +45,7 @@ const ArticleDetailsPage = () => {
   }
   return (
     <DynamicModuleLoader reducers={reducers}>
-      <div className={cls.ArticleDetailsPage}>
+      <Page className={cls.ArticleDetailsPage}>
         <Button theme={ThemeButton.OUTLINE} onClick={onBackToList}>
           Back to all articles
         </Button>
@@ -52,7 +53,7 @@ const ArticleDetailsPage = () => {
         <Text className={cls.commentTitle} title={'Comments'} size={TextSize.M} />
         <CommentForm onSendComment={onSendComment} />
         <CommentList comments={comments} isLoading={isCommentsLoading} />
-      </div>
+      </Page>
     </DynamicModuleLoader>
   )
 }

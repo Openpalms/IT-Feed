@@ -21,6 +21,7 @@ import { Country } from 'entities/Country'
 import { TextTheme } from 'shared/ui/Text/Text'
 import { Text } from 'shared/ui/Text/Text'
 import { useParams } from 'react-router-dom'
+import { Page } from 'shared/ui/Page/Page'
 
 interface ProfilePageProps {
   className?: string
@@ -108,7 +109,7 @@ const ProfilePage: React.FC<ProfilePageProps> = ({ className }) => {
 
   return (
     <DynamicModuleLoader reducers={reducers} shouldDestroy={true}>
-      <div className={classNames('', {}, [className])}>
+      <Page className={classNames('', {}, [className])}>
         <ProfilePageHeader />
         {Boolean(validationErrors?.length) &&
           validationErrors?.map((er) => (
@@ -128,7 +129,7 @@ const ProfilePage: React.FC<ProfilePageProps> = ({ className }) => {
           onChangeCountry={onChangeCountry}
           readonly={readonly}
         />
-      </div>
+      </Page>
     </DynamicModuleLoader>
   )
 }
