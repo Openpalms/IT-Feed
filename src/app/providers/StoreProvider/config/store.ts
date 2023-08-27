@@ -4,7 +4,7 @@ import { NavigateOptions } from 'react-router'
 import { CombinedState, Reducer } from 'redux'
 import { StateSchema } from './StateSchema'
 import { createReducerManager } from './reducerManager'
-import { userReducer } from 'app/entities/User'
+import { userReducer } from 'entities/User'
 import { To } from 'react-router-dom'
 
 export function createReduxStore(

@@ -1,4 +1,4 @@
-import { getAuthDataState } from 'app/entities/User'
+import { getAuthDataState } from 'entities/User'
 import { Suspense, memo, useCallback, useMemo } from 'react'
 import { useSelector } from 'react-redux'
 import { Route, Routes } from 'react-router-dom'

@@ -6,8 +6,8 @@ import { t } from 'i18next'
 import { Button, ThemeButton } from 'shared/ui/Button/Button'
 import { LoginModal } from 'features/AuthByUsername'
 import { useDispatch, useSelector } from 'react-redux'
-import { getAuthDataState } from 'app/entities/User'
-import { userActions } from 'app/entities/User/model/slice/UserSlice'
+import { getAuthDataState } from 'entities/User'
+import { userActions } from 'entities/User/model/slice/UserSlice'
 
 interface NavbarProps {
   className?: string

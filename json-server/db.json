@@ -19,9 +19,8 @@
       "img": "https://www.datocms-assets.com/48401/1628645197-learn-typescript.png",
       "views": 1022,
       "createdAt": "26.02.2022",
-      "type": [
-        "IT"
-      ],
+      "userId": "1",
+      "type": ["IT"],
       "blocks": [
         {
           "id": "1",

@@ -3,7 +3,7 @@ import { classNames } from 'shared/lib/classNames/classNames'
 import cls from './SidebarItem.module.scss'
 import { AppLink, ApplinkTheme } from 'shared/ui/AppLink/AppLink'
 import { useSelector } from 'react-redux'
-import { getAuthDataState } from 'app/entities/User'
+import { getAuthDataState } from 'entities/User'
 import { ISidebarItem } from 'widgets/Sidebar/model/selectors'
 interface SidebarItemProps {
   item: ISidebarItem

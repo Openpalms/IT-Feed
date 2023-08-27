@@ -1,7 +1,7 @@
-import { ArticleDetails } from 'app/entities/Article'
-import { CommentList } from 'app/entities/Comment'
+import { ArticleDetails } from 'entities/Article'
+import { CommentList } from 'entities/Comment'
 import { memo, useCallback, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { Text, TextSize } from 'shared/ui/Text/Text'
 import cls from './ArticleDetailsPage.module.scss'
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
@@ -12,6 +12,8 @@ import { fetchCommentsByArticleId } from '../model/services/fetchCommentsByArtic
 import { CommentForm } from 'features/AddNewComment'
 import { addCommentForArticle } from 'features/AddNewComment/model/services/addCommentForArticle/addCommentForArticle'
 import { newCommentActions } from 'features/AddNewComment/model/slices/addNewCommentSlice'
+import { Button, ThemeButton } from 'shared/ui/Button/Button'
+import { RoutePath } from 'shared/config/routeConfig/routeConfig'
 const reducers: ReducersList = {
   ArticleComment: articleCommentsReducer,
 }
@@ -20,6 +22,7 @@ const ArticleDetailsPage = () => {
   const comments = useSelector(getComments.selectAll)
   const isCommentsLoading = useSelector(getCommentsIsLoading)
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const onSendComment = useCallback(
     (text: string) => {
@@ -27,6 +30,10 @@ const ArticleDetailsPage = () => {
     },
     [dispatch],
   )
+
+  const onBackToList = useCallback(() => {
+    navigate(RoutePath.articles)
+  }, [])
 
   useEffect(() => {
     dispatch(fetchCommentsByArticleId(id))
@@ -38,6 +45,9 @@ const ArticleDetailsPage = () => {
   return (
     <DynamicModuleLoader reducers={reducers}>
       <div className={cls.ArticleDetailsPage}>
+        <Button theme={ThemeButton.OUTLINE} onClick={onBackToList}>
+          Back to all articles
+        </Button>
         <ArticleDetails articleId={id} />
         <Text className={cls.commentTitle} title={'Comments'} size={TextSize.M} />
         <CommentForm onSendComment={onSendComment} />

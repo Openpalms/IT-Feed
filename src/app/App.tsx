@@ -6,8 +6,8 @@ import { PageLoader } from 'widgets/PageLoader'
 import { useTheme } from './providers/ThemeProvider'
 import { AppRouter } from './providers/ThemeProvider/routers'
 import { useDispatch, useSelector } from 'react-redux'
-import { userActions } from './entities/User/model/slice/UserSlice'
-import { getMounted } from './entities/User'
+import { userActions } from '../entities/User/model/slice/UserSlice'
+import { getMounted } from '../entities/User'
 
 const App = () => {
   const { theme } = useTheme()

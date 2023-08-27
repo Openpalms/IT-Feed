@@ -12,12 +12,12 @@ import {
   getProfileValidationError,
   profileActions,
   profileReducer,
-} from 'app/entities/Profile'
+} from 'entities/Profile'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { useSelector } from 'react-redux'
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader'
-import { Currency } from 'app/entities/Currency'
-import { Country } from 'app/entities/Country'
+import { Currency } from 'entities/Currency'
+import { Country } from 'entities/Country'
 import { TextTheme } from 'shared/ui/Text/Text'
 import { Text } from 'shared/ui/Text/Text'
 import { useParams } from 'react-router-dom'

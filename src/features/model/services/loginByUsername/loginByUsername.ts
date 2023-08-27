@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { User } from 'app/entities/User'
-import { userActions } from 'app/entities/User/model/slice/UserSlice'
+import { User } from 'entities/User'
+import { userActions } from 'entities/User/model/slice/UserSlice'
 import { ThunkConfig, ThunkExtraArg } from 'app/providers/StoreProvider'
 import axios from 'axios'
 import { USER_LOCALSTORAGE_KEY } from 'shared/const/localstorage'

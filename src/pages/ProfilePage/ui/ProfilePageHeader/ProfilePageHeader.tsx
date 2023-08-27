@@ -5,9 +5,9 @@ import { Button, ThemeButton } from 'shared/ui/Button/Button'
 import { Text } from 'shared/ui/Text/Text'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
-import { getProfileReadonly, profileActions, updateProfileData } from 'app/entities/Profile'
+import { getProfileReadonly, profileActions, updateProfileData } from 'entities/Profile'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
-import { getAuthDataState } from 'app/entities/User'
+import { getAuthDataState } from 'entities/User'
 import { useParams } from 'react-router-dom'
 interface ProfilePageHeaderProps {
   className?: string
