@@ -19,8 +19,6 @@ interface ArticleListItemProps {
   view: ArticleView
 }
 
-// 35:31 time course 8 54
-
 export const ArticleListItem = memo((props: ArticleListItemProps) => {
   const { className, article, view } = props
   const { t } = useTranslation()
