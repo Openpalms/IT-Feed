@@ -7,9 +7,11 @@ import { AddCommentSchema } from 'features/AddNewComment'
 import { loginSchema } from 'features/AuthByUsername'
 import { ArticleCommentSchema } from 'pages/ArticleDetailsPage'
 import { ArticlePageSchema } from 'pages/ArticlesPage'
+import { IScrollRestoration } from 'features/ScrollRestoration'
 
 export interface StateSchema {
   user: UserSchema
+  scroll: IScrollRestoration
   //async reducers
 
   login?: loginSchema

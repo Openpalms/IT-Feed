@@ -4,11 +4,13 @@ import { CombinedState, Reducer } from 'redux'
 import { StateSchema } from './StateSchema'
 import { createReducerManager } from './reducerManager'
 import { userReducer } from 'entities/User'
+import { scrollReducer } from 'features/ScrollRestoration'
 
 export function createReduxStore(initialState?: StateSchema, asyncReducers?: ReducersMapObject<StateSchema>) {
   const rootReducers: ReducersMapObject<StateSchema> = {
     ...asyncReducers,
     user: userReducer,
+    scroll: scrollReducer,
   }
 
   const reducerManager = createReducerManager(rootReducers)
