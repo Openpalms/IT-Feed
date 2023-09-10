@@ -1,0 +1,12 @@
+.Tabs{
+ display: flex;
+ align-items: center;
+ gap: 10px;
+ cursor: pointer;   
+ margin-bottom: 30px;
+}
+.tab{
+    &:hover{
+        opacity: .7;
+    }
+}

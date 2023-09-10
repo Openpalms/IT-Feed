@@ -45,7 +45,8 @@ export const Page: React.FC<PageProps> = ({ className, children, onScrollEnd }) 
   return (
     <section ref={wrapperRef} className={classNames(cls.Page, {}, [className])} onScroll={onScroll}>
       {children}
-      <div ref={triggerRef} />
+      {/* {onScrollEnd ? <div ref={triggerRef} className={cls.trigger} /> : <></>} */}
+      <div ref={triggerRef} className={cls.trigger} />
     </section>
   )
 }

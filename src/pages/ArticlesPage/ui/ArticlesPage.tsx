@@ -10,6 +10,8 @@ import { getArticlesPageView, getArticlesPageisLoading } from '../model/selector
 import { Page } from 'shared/ui/Page/Page'
 import { fetchNextPage } from '../model/services/fetchNextPage'
 import { initArticlesPage } from '../model/services/initArticlesPage'
+import { ArticlesPageFilters } from './ArticlesPageFilters/ArticlesPageFilters'
+import { useSearchParams } from 'react-router-dom'
 
 const reducers: ReducersList = {
   articlePage: articlePageReducer,
@@ -22,25 +24,19 @@ const ArticlesPage = () => {
 
   const isLoading = useSelector(getArticlesPageisLoading)
   const view = useSelector(getArticlesPageView)
-  const onViewChange = useCallback(
-    (view: ArticleView) => {
-      dispatch(articlePageActions.setView(view))
-    },
-    [dispatch],
-  )
-
+  const [params] = useSearchParams()
   const onLoadNextPage = useCallback(() => {
     dispatch(fetchNextPage())
   }, [dispatch])
 
   useEffect(() => {
-    dispatch(initArticlesPage())
+    dispatch(initArticlesPage(params))
   }, [dispatch])
 
   return (
     <DynamicModuleLoader shouldDestroy={false} reducers={reducers}>
       <Page onScrollEnd={onLoadNextPage} className={cls.ArticlesPage}>
-        <ArticleViewSwitcher view={view} onViewClick={onViewChange} />
+        <ArticlesPageFilters />
         <ArticleList articles={articles} view={view} isLoading={isLoading} />
       </Page>
     </DynamicModuleLoader>

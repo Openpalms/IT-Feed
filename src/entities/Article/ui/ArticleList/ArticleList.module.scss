@@ -6,10 +6,8 @@
 
 .LIST {
     display: flex;
+    align-items: center;
+    justify-content: start;
     flex-wrap: wrap;
-
-    .card {
-        margin-right: 30px;
-        margin-bottom: 30px;
-    }
+    gap: 30px;
 }

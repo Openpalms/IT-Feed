@@ -1,7 +1,17 @@
-export function useDebounce(fn: Function, ms = 300) {
-  let timeoutId: ReturnType<typeof setTimeout>
-  return function (this: any, ...args: any[]) {
-    clearTimeout(timeoutId)
-    timeoutId = setTimeout(() => fn.apply(this, args), ms)
-  }
+import { MutableRefObject, useCallback, useRef } from 'react'
+
+export function useDebounce(callback: (...args: any[]) => void, delay: number) {
+  const timer = useRef() as MutableRefObject<any>
+
+  return useCallback(
+    (...args: any[]) => {
+      if (timer.current) {
+        clearTimeout(timer.current)
+      }
+      timer.current = setTimeout(() => {
+        callback(...args)
+      }, delay)
+    },
+    [callback, delay],
+  )
 }
