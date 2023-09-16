@@ -5,7 +5,7 @@ import { UserSchema } from 'entities/User'
 import { AxiosInstance } from 'axios'
 import { AddCommentSchema } from 'features/AddNewComment'
 import { loginSchema } from 'features/AuthByUsername'
-import { ArticleCommentSchema } from 'pages/ArticleDetailsPage'
+import { ArticleCommentSchema, ArticleReccomendedSchema } from 'pages/ArticleDetailsPage'
 import { ArticlePageSchema } from 'pages/ArticlesPage'
 import { IScrollRestoration } from 'features/ScrollRestoration'
 
@@ -18,6 +18,7 @@ export interface StateSchema {
   profile?: ProfileSchema
   articleDetails?: ArticleDetailsSchema
   ArticleComment?: ArticleCommentSchema
+  ArticleRecomendations?: ArticleReccomendedSchema
   AddCommentForm?: AddCommentSchema
   articlePage?: ArticlePageSchema
 }

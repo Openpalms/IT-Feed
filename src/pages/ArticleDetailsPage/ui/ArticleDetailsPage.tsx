@@ -1,4 +1,4 @@
-import { ArticleDetails } from 'entities/Article'
+import { ArticleDetails, ArticleList, ArticleView } from 'entities/Article'
 import { CommentList } from 'entities/Comment'
 import { memo, useCallback, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
@@ -15,13 +15,19 @@ import { newCommentActions } from 'features/AddNewComment/model/slices/addNewCom
 import { Button, ThemeButton } from 'shared/ui/Button/Button'
 import { RoutePath } from 'shared/config/routeConfig/routeConfig'
 import { Page } from 'shared/ui/Page/Page'
+import { ArticleReccomendedReducer, getRecomendations } from '../model/slices/ArticleReccomendedSlice'
+import { getRecomendationsIsLoading } from '../model/selectors/recomendations'
+import { fetchRecomendations } from '../model/services/fetchRecomendations'
 const reducers: ReducersList = {
   ArticleComment: articleCommentsReducer,
+  ArticleRecomendations: ArticleReccomendedReducer,
 }
 const ArticleDetailsPage = () => {
   const { id } = useParams<{ id: string }>()
   const comments = useSelector(getComments.selectAll)
+  const recomendations = useSelector(getRecomendations.selectAll)
   const isCommentsLoading = useSelector(getCommentsIsLoading)
+  const isRecomendationsLoading = useSelector(getRecomendationsIsLoading)
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -38,6 +44,7 @@ const ArticleDetailsPage = () => {
 
   useEffect(() => {
     dispatch(fetchCommentsByArticleId(id))
+    dispatch(fetchRecomendations())
   }, [])
 
   if (!id) {
@@ -50,6 +57,8 @@ const ArticleDetailsPage = () => {
           Back to all articles
         </Button>
         <ArticleDetails articleId={id} />
+        <Text className={cls.commentTitle} title={'Recommended'} size={TextSize.L} />
+        <ArticleList articles={recomendations} isLoading={isRecomendationsLoading} view={ArticleView.LIST} />
         <Text className={cls.commentTitle} title={'Comments'} size={TextSize.M} />
         <CommentForm onSendComment={onSendComment} />
         <CommentList comments={comments} isLoading={isCommentsLoading} />

@@ -22,7 +22,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
   const { className, articles, view = ArticleView.BLOCK, isLoading } = props
 
   const renderArticle = (article: Article) => (
-    <ArticleListItem article={article} view={view} className={cls.card} key={article.id} />
+    <ArticleListItem article={article} view={view} className={cls.card} key={article.id} target='_blank' />
   )
 
   return (
