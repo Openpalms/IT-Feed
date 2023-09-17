@@ -8,6 +8,8 @@ import { LoginModal } from 'features/AuthByUsername'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAuthDataState } from 'entities/User'
 import { userActions } from 'entities/User/model/slice/UserSlice'
+import { Text, TextTheme } from 'shared/ui/Text/Text'
+import { RoutePath } from 'shared/config/routeConfig/routeConfig'
 
 interface NavbarProps {
   className?: string
@@ -29,6 +31,10 @@ export const Navbar: React.FC<NavbarProps> = memo(({ className }) => {
   if (authData) {
     return (
       <div className={classNames(cls.Navbar, {}, [className])}>
+        <Text className={cls.appname} title={'ITFeed'} theme={TextTheme.PRIMARY} />
+        <AppLink theme={ApplinkTheme.SECONDARY} to={RoutePath.article_create} className={cls.createBtn}>
+          Create new article
+        </AppLink>
         <Button theme={ThemeButton.CLEAR_INVERTED} className={cls.links} onClick={onLogout}>
           {t('выйти')}{' '}
         </Button>
@@ -39,6 +45,7 @@ export const Navbar: React.FC<NavbarProps> = memo(({ className }) => {
 
   return (
     <div className={classNames(cls.Navbar, {}, [className])}>
+      <Text className={cls.appname} title={'ITFeed'} theme={TextTheme.PRIMARY} />
       <Button theme={ThemeButton.CLEAR_INVERTED} className={cls.links} onClick={handleOpenModal}>
         {t('войти')}{' '}
       </Button>
